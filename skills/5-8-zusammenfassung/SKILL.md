@@ -1,6 +1,6 @@
 ---
 name: 5-8-zusammenfassung
-version: 1.1.0
+version: 1.2.0
 description: >
   Gliedert ein Dokument als 5-8-Zusammenfassung: zwei Ebenen mit je 5 bis 8 disjunkten,
   erschöpfenden Themen, abgelegt als Memo nach dem Skill "memo". Verwenden, wenn der User
@@ -35,7 +35,25 @@ Vor jeder Gliederungsentscheidung wird das Dokument vollständig erfasst und ref
 7. **Als Memo ausgeben** nach dem Skill `memo` (Abschnitt *Anwendung — ein Memo anlegen*):
     - kein YAML-Frontmatter, Header-Block mit `**Datum:**` und `**Status:** Zusammenfassung`
     - Datei `NN <Titel> — 5-8-Zusammenfassung.md` in den `@Memo/`-Ordner des aktuellen Projekts
+    - Vorgaben eines Aufrufers beachten (nächster Abschnitt)
     - Pfad dem User als Link nennen
+
+---
+
+## Vorgaben eines Aufrufers
+
+Ein Aufrufer, ein anderer Skill (z. B. `video-analyse`) oder der User im Chat, kann beim Aufruf Vorgaben machen. Jede ist einzeln wählbar; fehlt eine, gilt die rechte Spalte.
+
+|Vorgabe|Wirkung|ohne Vorgabe|
+|---|---|---|
+|Zielordner|Datei in diesen Ordner des Projekts; fehlt er, anlegen|`@Memo/` des Projekts|
+|Nummer|genau diese Nummer `NN`, keine eigene Vergabe|Nummer nach dem Skill `memo`|
+|Titel|Dateiname `NN <Titel> — 5-8-Zusammenfassung.md`, Überschrift `# <Titel> — 5-8-Zusammenfassung`|Titel selbst wählen|
+|nicht committen|Datei schreiben, aber nicht committen|committen, falls Git-Repo (nach `memo`)|
+
+- Header-Block (`**Datum:**`, `**Status:** Zusammenfassung`), Gliederung und Format ab `## 1)` sind mit und ohne Vorgaben gleich.
+- Gibt es die Zieldatei schon: abbrechen, den Pfad nennen, **nichts überschreiben**. Die Nummer sonst nicht prüfen; ein Aufrufer, der sie vorgibt, hat sie reserviert.
+- Keine eigene Rückfrage, auch mit Vorgaben: Der Aufruf ist der Auftrag.
 
 ---
 
@@ -105,5 +123,6 @@ Wesentliches in eigenen Worten …
 - [ ] Pro Hauptthema kurze Einleitung
 - [ ] Pro Unterpunkt prägnante Inhaltswiedergabe
 - [ ] Skill `memo` für Format und Dateiname angewendet
-- [ ] Datei im `@Memo/`-Ordner des Projekts gespeichert (und committet, falls Git-Repo)
+- [ ] Vorgaben eines Aufrufers (Zielordner, Nummer, Titel, nicht committen) befolgt, keine Datei überschrieben
+- [ ] Datei im `@Memo/`-Ordner bzw. im vorgegebenen Zielordner gespeichert (und committet, falls Git-Repo und nicht anders vorgegeben)
 - [ ] Pfad dem User als Link genannt

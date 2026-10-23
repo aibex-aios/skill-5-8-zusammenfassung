@@ -1,5 +1,5 @@
 name: skill-5-8-zusammenfassung
-version: 1.1.0
+version: 1.2.0
 type: skill
 description: Gliedert ein Dokument als 5-8-Zusammenfassung (zwei Ebenen mit je 5 bis 8 Themen) und legt sie als Memo ab
 requires:
